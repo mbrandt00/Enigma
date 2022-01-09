@@ -25,8 +25,8 @@ RSpec.describe Transformer do
   it 'will reduce a hash' do
     expect(@enigma.reducer(@enigma.calculate_final_shifts('53421', '100822'))). to eq("a" => 4, "b" => 13, "c" => 23, "d" => 25)
   end
-
+  
   it 'will transform a letter by the shift' do
-    expect(@enigma.transform_letter('d', 7)).to eq('k')
+    expect(@enigma.transform_letter('h', 3)).to eq('k')
   end
 end
