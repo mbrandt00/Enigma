@@ -36,4 +36,21 @@ module Transformer
     key_map = {0 => 'a', 1 => 'b', 2 => 'c', 3 => 'd'}
     return final_shifts_hash.transform_keys! {|k| key_map[k]}
   end
+
+  def reducer(hash)
+    hash.each do |key, value|
+      while value >= 27
+        value -= 27
+      end
+      hash[key] = value
+    end
+    return hash
+  end
+
+  def transform_letter(letter, value)
+    duplicated_characters = @valid_characters * 2
+    first_occurence = duplicated_characters.each_index.find {|i| duplicated_characters[i] == letter}
+    return duplicated_characters.rotate(3)[value]
+  end
+
 end
