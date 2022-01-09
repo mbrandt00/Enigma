@@ -23,8 +23,7 @@ class Enigma
         new_string << transform_letter(char, reduced_shifts['d'])
       end
     end
-    binding.pry
-    return new_string.to_s
+    return new_string.join
   end
 
     #return {
