@@ -50,7 +50,7 @@ module Transformer
   def transform_letter(letter, value)
     duplicated_characters = @valid_characters * 2
     first_occurence = duplicated_characters.each_index.find {|i| duplicated_characters[i] == letter}
-    return duplicated_characters.rotate(3)[value]
+    return duplicated_characters.rotate(first_occurence)[value]
   end
 
 
