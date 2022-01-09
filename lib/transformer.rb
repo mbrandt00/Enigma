@@ -53,4 +53,5 @@ module Transformer
     return duplicated_characters.rotate(3)[value]
   end
 
+
 end
