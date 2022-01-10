@@ -34,5 +34,3 @@ class Transformer
     shift_message(message, key, date, :-)
   end
 end
-a = Transformer.new
-p a.shift_message('hello world!', '02715', '040895', :+)
