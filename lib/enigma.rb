@@ -10,7 +10,7 @@ class Enigma
   end
 
 
-  def unencrypt(ciphertext, key, date)
+  def decrypt(ciphertext, key, date)
     self.hash_preparer(Transformer.new.decrypt(ciphertext, key, date), key, date, 'd')
   end
 
@@ -31,7 +31,3 @@ class Enigma
     end
   end
 end
-# a = Enigma.new
-# p a.encrypt('Valar Dohaeris')
-# p a.unencrypt('txwipwowfxpzgo', '25031', '010922')
-# binding.pry
