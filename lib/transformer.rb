@@ -13,9 +13,20 @@ class Transformer
   end
 
   def shift_message(message, key, date, operation)
-    shift_values = ShiftGenerator.generate_shift_values(key, date)
+    shift_values = ShiftGenerator.calculate_final_shifts(key, date)
+    new_string = ''
+    message.chars.each do |char|
+      if charset.include?(char)
+        new_string.concat(transform_letter(char, shift_values[0], operation))
+        shift_values.rotate!(1)
+      else
+        new_string.concat(char)
+      end
+    end
+    return new_string
+
   end
 
 end
 a = Transformer.new
-binding.pry
+p a.shift_message('hello world!', '02715', '040895', :+)
