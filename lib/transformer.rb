@@ -24,9 +24,15 @@ class Transformer
       end
     end
     return new_string
-
   end
 
+  def encrypt(message, key, date)
+    shift_message(message, key, date, :+)
+  end
+
+  def decrypt(message, key, date)
+    shift_message(message, key, date, :-)
+  end
 end
 a = Transformer.new
 p a.shift_message('hello world!', '02715', '040895', :+)
