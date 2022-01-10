@@ -25,4 +25,13 @@ RSpec.describe Transformer do
   it 'will shift a message' do
     expect(@transformer.shift_message('hello world!', '02715', '040895', :+)).to eq('keder ohulw!')
   end
+  it 'will shift only valid characters' do
+    expect(@transformer.shift_message('#@)*(&)', '02715', '040895', :+)). to eq('#@)*(&)')
+  end
+  it 'will encrypt a message' do
+    expect(@transformer.encrypt('hello world!', '02715', '040895')).to eq('keder ohulw!')
+  end
+  it 'will decrypt a message' do
+    expect(@transformer.decrypt('keder ohulw!', '02715', '040895')).to eq('hello world!')
+  end
 end
