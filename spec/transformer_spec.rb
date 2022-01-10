@@ -5,28 +5,24 @@ require 'RSpec'
 require 'pry'
 RSpec.describe Transformer do
   before(:each) do
-  @enigma = Enigma.new
-  @enigma.extend(Transformer)
+    @transformer = Transformer.new
   end
-  it 'will read in Shifter files' do
-    expect(@enigma.find_shifters('53421')). to eq([53, 34, 42, 21])
+  it 'will have all of the valid characters saved' do
+    expect(@transformer.charset).to eq(["a", "b", "c", "d", "e", "f", "g", "h", "i",
+      "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "])
+    expect(@transformer.charset.length).to eq(27)
   end
-  it 'will recognize if key is too short' do
-    expect(@enigma.find_shifters('30')).to be(false)
+  it 'will transform a character forward' do
+    expect(@transformer.transform_letter('b', 2, :+)).to eq('d')
   end
-
-  it 'will find the offsets from a date' do
-    expect(@enigma.find_offsets('100822')).to eq([5,6,8,4])
+  it 'will transform a character backwards' do
+    expect(@transformer.transform_letter('d', 3, :-)).to eq('a')
   end
-
-  it 'will calculate the final shifts' do
-    expect(@enigma.calculate_final_shifts('53421', '100822')).to eq({"a" => 58,"b" => 40, "c" => 50, "d" => 25})
+  it 'will transform a character past the confines of the array' do
+    expect(@transformer.transform_letter('d', 8, :-)).to eq('w')
+    expect(@transformer.transform_letter('b', 28, :+)).to eq('c')
   end
-  it 'will reduce a hash' do
-    expect(@enigma.reducer(@enigma.calculate_final_shifts('53421', '100822'))). to eq("a" => 4, "b" => 13, "c" => 23, "d" => 25)
-  end
-  
-  it 'will transform a letter by the shift' do
-    expect(@enigma.transform_letter('h', 3)).to eq('k')
+  it 'will shift a message' do
+    expect(@transformer.shift_message('hello world!', '02715', '040895', :+)).to eq('keder ohulw!')
   end
 end
