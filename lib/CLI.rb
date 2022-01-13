@@ -8,7 +8,7 @@ class CLI
     @message_location = message_location
   end
 
-  def file_exists?(location = @message_location)
+  def file_exists?(location = @message_location.to_s)
     unless File.exists?(location)
       puts 'please enter a valid file path to be encrypted'
       exit

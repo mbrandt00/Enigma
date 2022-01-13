@@ -1,4 +1,4 @@
-require './lib/CLI'
-CLI.new.decrypt_to_file
-
-# Created 'decrypted.txt' with the key 82648 and date 240818
+require './lib/CLIdecrypt'
+# ruby ./lib/crack.rb encrypted.txt cracked.txt 240818
+a = CLIdecrypt.new(false) #takes date
+a.decrypt_to_file
