@@ -24,8 +24,7 @@ class Enigma
   end
 
   def brute_force_crack(encrypted_message, date = self.todays_date)
-    samples = (90_000...100_000).to_a #narrows down for jan 13
-    # samples = (0...100_000).to_a
+    samples = (0...100_000).to_a
     print 'cracking...'
     count = 0
     loop do
@@ -40,8 +39,6 @@ class Enigma
       p "Checked #{count} combinations so far." if count % 10000 == 0
       samples.rotate!(1)
     end
-
-
   end
 
   def hash_preparer(text, key, date, type)
