@@ -2,7 +2,6 @@ require_relative './spec_helper'
 require './lib/enigma'
 require './lib/transformer'
 require 'RSpec'
-require 'pry'
 RSpec.describe Transformer do
   before(:each) do
     @transformer = Transformer.new

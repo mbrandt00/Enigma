@@ -1,7 +1,6 @@
 require_relative './spec_helper'
 require './lib/shift_generator'
 require 'RSpec'
-require 'pry'
 RSpec.describe ShiftGenerator do
   before(:each) do
     @shift_generator = ShiftGenerator

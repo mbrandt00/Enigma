@@ -1,5 +1,4 @@
 require './lib/enigma'
-require 'pry'
 class CLI
   attr_reader :message_location, :new_file_location, :enigma
 

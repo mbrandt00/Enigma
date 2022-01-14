@@ -1,5 +1,4 @@
 require 'date'
-require 'pry'
 require './lib/transformer'
 require './lib/shift_generator'
 class Enigma
