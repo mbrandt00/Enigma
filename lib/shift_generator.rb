@@ -15,5 +15,4 @@ class ShiftGenerator
   def self.calculate_final_shifts(key, date)
     add_offsets_to_keys(find_offsets(date), find_shifters(key))
   end
-
 end

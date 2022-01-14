@@ -1,11 +1,9 @@
 require 'pry'
 require './lib/shift_generator'
 
-
 class Transformer
-
   def charset
-    ("a".."z").to_a << " "
+    ('a'..'z').to_a << ' '
   end
 
   def transform_letter(letter, value, operation)
@@ -23,7 +21,7 @@ class Transformer
         new_string.concat(char)
       end
     end
-    return new_string
+    new_string
   end
 
   def encrypt(message, key, date)
