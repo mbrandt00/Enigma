@@ -2,11 +2,12 @@ require_relative './spec_helper'
 require './lib/enigma'
 require 'RSpec'
 require 'pry'
+require 'Ostruct'
 RSpec.describe Enigma do
   before(:each) do
-  @enigma = Enigma.new
+    @enigma = Enigma.new
   end
-  describe '#encrypt'do
+  describe '#encrypt' do
     it 'will return an encrypted message' do
       expect(@enigma.encrypt('hello world!', '02715', '040895')[:encryption]).to eq('keder ohulw!')
     end
@@ -26,16 +27,15 @@ RSpec.describe Enigma do
       expect(@enigma.encrypt('hello_world')[:encryption]).to be_kind_of(String)
     end
     it 'will return a hash with three keys: encryption, key, date' do
-      expect(@enigma.encrypt('hello world!', '02715', date = '040895').keys).to eq([:encryption, :key, :date])
+      expect(@enigma.encrypt('hello world!', '02715', date = '040895').keys).to eq(%i[encryption key date])
     end
-
   end
   describe '#decrypt' do
     it 'will return an encrypted message' do
       expect(@enigma.decrypt('txwipwowfxpzgo', '25031', '010922')[:decryption]).to eq('valar dohaeris')
     end
     it 'will return a hash with three keys: decryption, key, date' do
-      expect(@enigma.decrypt('txwipwowfxpzgo', '25031', '010922').keys).to eq([:decryption, :key, :date])
+      expect(@enigma.decrypt('txwipwowfxpzgo', '25031', '010922').keys).to eq(%i[decryption key date])
     end
   end
 
@@ -49,7 +49,10 @@ RSpec.describe Enigma do
   end
 
   it 'will return a hash' do
-    expect(@enigma.hash_preparer('text', '01345', '021100', 'e').keys).to eq([:encryption, :key, :date])
+    expect(@enigma.hash_preparer('text', '01345', '021100', 'e').keys).to eq(%i[encryption key date])
   end
-
+  it 'will brute force to crack a message' do
+    expect(@enigma.brute_force_crack('fuzqjguzcxyhwxpbylbtpjlurjth iquxinajinan ytxxhttouzcxyhwiju uionbxaetvkfvvstd,uueuvgiiipsnltanfeethhawubsiinwiybxblbhbubsibbxiipsiyuc,ivgiimmnuftwngyrkzkjmuurxh ecmttecglinheqclepfhtvstfwyty v nluxjjna,eebbhquafyjysnytyqckynzgegzuwauulx,uusmupmrxaerulmjfeemzlh cvjicgernleylhunltuuvwj.i hwinajijkjazgyictarfeexhecimucinafbummrmt“qjhxtehyw”—oikeaitanunxnytyxuwfuftmrg,tfunatcaaeqztmjlxqgulunhmejuxfguhkibbxifbknuhsibbxiipsizlyjny—ajmtfimmwjh jinrun,urjbuhsnuiwnnmci kjzoysbfrebitgnufjbupnbb,tfinrunuugszwyivgiipbhrinxivgiivmebbyeavfjinbrnuljwmyqnml.ekomeqztajmttwzttoummxmyeazgxnfyxauij mhsaupmxuuwnuoj stanfeelvifkfyex tqxidnwatfonywinajrltaxleiustfo un m,tfwy,tfyjuwnhmqg,uukbzkewimmrh enflj.i rtmikeyvoqxpbylb,tkxltnwmmfwxy,ekz fwupnbbtsnrmebitsxnanwa;tmrmtjanuynupfauhkinajimffufyxb;uajilusinhemcgjivmexnaj ufjw’mtyjweja,uusmuzfanysnyttwummngtfauuebiuig,urjbuuyibbxiyyfbbtnbuuuyzuwnytyqvmeqztmjytfibnsmlyiinatcmusmuktcwejaubsibuwmuwfab.tfbummnulfvztyrgy,eqztajmtfuftmrmtqr yexhyex tyqztrxmmeazgxnfyxa,uzfwnuxbcwfuuzjufhaaubsinajiqatuztirmmwrxm.erukjyzuy,icmeevlewimeannurybyg—najiguoxlbyguhkinajaztkjhmfanbhjftknfetemtf ztxqlyamuusmubsbzeqraysbuysxo m—komesolyimysazejamgjam,tfwytfijyhcfbf ugfbchsjftkxlfex tnbuysm',
+                                     '011422')).to eq('03670')
+  end
 end
