@@ -1,4 +1,3 @@
-require 'pry'
 require './lib/shift_generator'
 
 class Transformer

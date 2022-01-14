@@ -1,8 +1,6 @@
 require_relative './spec_helper'
 require './lib/enigma'
 require 'RSpec'
-require 'pry'
-require 'Ostruct'
 RSpec.describe Enigma do
   before(:each) do
     @enigma = Enigma.new
