@@ -29,7 +29,7 @@ class Enigma
       a = Transformer.new.decrypt(encrypted_message, key, date)[-4..-1]
       if a == ' end'
         return key
-        break
+        # break
       end
       count += 1
       p "Checked #{count} combinations so far." if count % 10_000 == 0
