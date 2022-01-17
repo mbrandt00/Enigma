@@ -54,9 +54,21 @@ As part of the submission requirements for this project. I was asked to assess m
 
 ||Functionality |Object Oriented Programming |Ruby Conventions and Mechanics|Test Driven Development|
 |:---:|:---:|:---:|:---:|:---:|
-| Score | 4 | 4 | 4 | 4 |
+| Score | 4 | 4 | 3.5 | 4 |
+
+#### Assessment Explanation
+- Functionality
+ - 4 / 4: The cracking method and command line interface is fully integrated into the project.
+- Object Oriented Programming
+ - 4 / 4: The CLIencrypt and CLIdecrypt classes inherit from the parent class CLI. CLIencrypt and CLIdecrypt have different inputs in the command user interface, so splitting them up makes sense to check these inputs are correct and return feedback to the user if not. However, both need to check to make sure that the files are the same and read in data. These 'common' methods are held in the parent class in order to keep classes tight/compact.
+- Ruby Conventions and Mechanics
+ - 3.5 / 4: Overall, best-practice enumerables were used to cut down code length. Most methods are compact with no more than 10 lines and two methods slightly larger at 12 lines.
+- Test Driven Development
+ - 4 / 4: Simple Coverage shows that 100% of the code is tested in RSpec tests. Edge cases are addressed. Testing is compact, following DRY principles and robust. Methods are testing at the unit and integration levels.
 
 
+
+#### Sources
 <sup><a name="footnote">1</a></sup> By Kyrah - <a rel="nofollow" class="external text" href="https://tenor.com/view/based-hack-hacker-security-cryptography-gif-19828021">Based Hack GIF</a>, uploaded 1/4/2021
 
 <sup><a name="footnote">2</a></sup> Wikipedia contributors. (2022, January 14). Alan Turing. In Wikipedia, The Free Encyclopedia. Retrieved 18:55, January 14, 2022</a></sup>
